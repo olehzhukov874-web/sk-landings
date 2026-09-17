@@ -79,7 +79,10 @@ header.top{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92);
 @media(max-width:860px){.product-card{padding:10px 12px 8px; display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:center; text-align:left} .product-card img{max-height:120px; margin:0} .product-card .ribbon{position:static; display:inline-block; margin-bottom:6px} .product-card .disc-ribbon{top:10px; right:10px} .shotcap{font-size:12px}}
 .shotcap{font-size:12.5px; color:var(--muted); font-weight:600}
 .price-box{display:flex; align-items:baseline; gap:12px; margin:12px 0 4px; flex-wrap:wrap}
-.price-new{font-size:40px; font-weight:800; letter-spacing:-.03em; line-height:1}
+.price-new{font-size:40px; font-weight:800; letter-spacing:-.03em; line-height:1; color:var(--danger); display:inline-block; transform-origin:left center;
+  animation:pricePulse 2.4s ease-in-out infinite}   /* 17.09: цена выделена цветом и мягкой пульсацией (решение пользователя) */
+@keyframes pricePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@media (prefers-reduced-motion:reduce){.price-new{animation:none}}
 .price-old{font-size:20px; color:var(--muted); text-decoration:line-through}
 .save-badge{background:var(--danger-bg); color:var(--danger); font-weight:800; font-size:13.5px; padding:5px 10px; border-radius:9px}
 .pricenote{font-size:12.5px; color:var(--muted); margin:0 0 12px}
@@ -137,6 +140,9 @@ header.top{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92);
 /* form card */
 .form-card{background:#fff; border:2px solid var(--accent); border-radius:18px; padding:18px; color:var(--ink); box-shadow:var(--shadow)}
 .form-card h3{margin-bottom:2px; font-size:18px}
+.howq{display:flex; align-items:center; justify-content:space-between; width:100%; background:none; border:none; padding:0 0 8px; margin:0; font:inherit; font-weight:800; font-size:18px; color:var(--ink); cursor:pointer; text-align:left}
+.howq .chev{font-size:16px; color:var(--accent); transition:transform .25s} .howq[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.steps4[hidden]{display:none}
 .form-card .sub{color:var(--muted); font-size:13.5px; margin-bottom:12px}
 .inp{width:100%; padding:14px 15px; border:1.5px solid #cfd8e3; border-radius:12px; font-size:16px; font-family:inherit; outline:none; margin-bottom:10px;
   transition:border-color .15s, box-shadow .15s}
@@ -326,7 +332,6 @@ body.free .disc,body:not(.free) .nodisc{display:none}
 
       <div id="buy">
         <h1>Flexavitan Max® — jediná oficiálna stránka výrobcu na Slovensku</h1>
-        <p class="sub-h">Flexavitan Max priamo od výrobcu: bez platby vopred, platíte kuriérovi pri prevzatí.</p>
         <div class="price-box">
           <span class="price-new">49 €</span>
           <span class="price-old">98 €</span>
@@ -336,8 +341,8 @@ body.free .disc,body:not(.free) .nodisc{display:none}
 
         <div class="form-card">
           <form class="order-form" autocomplete="on" novalidate>
-            <h3>Objednajte originálny produkt</h3>
-            <ol class="steps4"><li>Zadáte svoje meno a telefónne číslo</li><li>Zavolá vám konzultant, potvrdí adresu a čas doručenia, žiadne údaje z karty</li><li>Kuriér vám balík doručí do 1 až 3 dní</li><li>Pri prevzatí si balík skontrolujete a zaplatíte kuriérovi</li></ol>
+            <button type="button" class="howq" aria-expanded="false">Ako objednať?<span class="chev">▾</span></button>
+            <ol class="steps4" hidden><li>Zadáte svoje meno a telefónne číslo</li><li>Zavolá vám konzultant, potvrdí adresu a čas doručenia, žiadne údaje z karty</li><li>Kuriér vám balík doručí do 1 až 3 dní</li><li>Pri prevzatí si balík skontrolujete a zaplatíte kuriérovi</li></ol>
             <input class="inp" type="text" name="name" placeholder="Meno a priezvisko" autocomplete="name">
             <div class="phone-field"><span class="p48">🇸🇰 +421</span><input class="inp" type="tel" name="phone" placeholder="901 234 567" inputmode="numeric" autocomplete="tel"></div>
             <p class="ph-err">Zadajte platné telefónne číslo</p>
@@ -559,8 +564,8 @@ body.free .disc,body:not(.free) .nodisc{display:none}
         </div>
         <div class="form-card">
           <form class="order-form" autocomplete="on" novalidate>
-            <h3>Objednajte originálny produkt</h3>
-            <ol class="steps4"><li>Zadáte svoje meno a telefónne číslo</li><li>Zavolá vám konzultant, potvrdí adresu a čas doručenia, žiadne údaje z karty</li><li>Kuriér vám balík doručí do 1 až 3 dní</li><li>Pri prevzatí si balík skontrolujete a zaplatíte kuriérovi</li></ol>
+            <button type="button" class="howq" aria-expanded="false">Ako objednať?<span class="chev">▾</span></button>
+            <ol class="steps4" hidden><li>Zadáte svoje meno a telefónne číslo</li><li>Zavolá vám konzultant, potvrdí adresu a čas doručenia, žiadne údaje z karty</li><li>Kuriér vám balík doručí do 1 až 3 dní</li><li>Pri prevzatí si balík skontrolujete a zaplatíte kuriérovi</li></ol>
             <input class="inp" type="text" name="name" placeholder="Meno a priezvisko" autocomplete="name">
             <div class="phone-field"><span class="p48">🇸🇰 +421</span><input class="inp" type="tel" name="phone" placeholder="901 234 567" inputmode="numeric" autocomplete="tel"></div>
             <p class="ph-err">Zadajte platné telefónne číslo</p>
@@ -632,6 +637,8 @@ body.free .disc,body:not(.free) .nodisc{display:none}
 
 
   // --- FAQ ---
+  // «Как заказать?» — шаги заказа раскрываются по клику (17.09)
+  Array.prototype.forEach.call(document.querySelectorAll('.howq'),function(b){ b.addEventListener('click',function(){ var ol=b.nextElementSibling, o=b.getAttribute('aria-expanded')==='true'; b.setAttribute('aria-expanded',o?'false':'true'); if(ol) ol.hidden=o; }); });
   document.querySelectorAll('.q button').forEach(function(btn){
     btn.addEventListener('click',function(){ var q=btn.parentElement, a=q.querySelector('.ans');
       if(q.classList.contains('open')){ q.classList.remove('open'); a.style.maxHeight=null; }

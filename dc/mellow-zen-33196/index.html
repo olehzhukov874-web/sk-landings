@@ -79,7 +79,10 @@ header.top{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92);
 @media(max-width:860px){.product-card{padding:10px 12px 8px; display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:center; text-align:left} .product-card img{max-height:120px; margin:0} .product-card .ribbon{position:static; display:inline-block; margin-bottom:6px} .product-card .disc-ribbon{top:10px; right:10px} .shotcap{font-size:12px}}
 .shotcap{font-size:12.5px; color:var(--muted); font-weight:600}
 .price-box{display:flex; align-items:baseline; gap:12px; margin:12px 0 4px; flex-wrap:wrap}
-.price-new{font-size:40px; font-weight:800; letter-spacing:-.03em; line-height:1}
+.price-new{font-size:40px; font-weight:800; letter-spacing:-.03em; line-height:1; color:var(--danger); display:inline-block; transform-origin:left center;
+  animation:pricePulse 2.4s ease-in-out infinite}   /* 17.09: цена выделена цветом и мягкой пульсацией (решение пользователя) */
+@keyframes pricePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@media (prefers-reduced-motion:reduce){.price-new{animation:none}}
 .price-old{font-size:20px; color:var(--muted); text-decoration:line-through}
 .save-badge{background:var(--danger-bg); color:var(--danger); font-weight:800; font-size:13.5px; padding:5px 10px; border-radius:9px}
 .pricenote{font-size:12.5px; color:var(--muted); margin:0 0 12px}
@@ -137,6 +140,9 @@ header.top{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92);
 /* form card */
 .form-card{background:#fff; border:2px solid var(--accent); border-radius:18px; padding:18px; color:var(--ink); box-shadow:var(--shadow)}
 .form-card h3{margin-bottom:2px; font-size:18px}
+.howq{display:flex; align-items:center; justify-content:space-between; width:100%; background:none; border:none; padding:0 0 8px; margin:0; font:inherit; font-weight:800; font-size:18px; color:var(--ink); cursor:pointer; text-align:left}
+.howq .chev{font-size:16px; color:var(--accent); transition:transform .25s} .howq[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.steps4[hidden]{display:none}
 .form-card .sub{color:var(--muted); font-size:13.5px; margin-bottom:12px}
 .inp{width:100%; padding:14px 15px; border:1.5px solid #cfd8e3; border-radius:12px; font-size:16px; font-family:inherit; outline:none; margin-bottom:10px;
   transition:border-color .15s, box-shadow .15s}
@@ -311,7 +317,7 @@ body.free .disc,body:not(.free) .nodisc{display:none}
         <div class="product-card">
           <span class="disc-ribbon disc"></span>
           <img src="../../img/bgw3-cat-drc-33196.webp" alt="Mellow Zen free Neuro" width="640" height="640" fetchpriority="high" decoding="async">
-          <div><span class="ribbon">Zadarmo</span><div class="shotcap">Takto vyzerá originálne balenie, ktoré vám kuriér prinesie: pečať, číslo šarže, dátum spotreby.</div></div>
+          <div><span class="ribbon">1 balenie ako darček</span><div class="shotcap">Takto vyzerá originálne balenie, ktoré vám kuriér prinesie: pečať, číslo šarže, dátum spotreby.</div></div>
         </div>
       </div>
         <div class="scarcity" id="scarcity">
@@ -326,32 +332,31 @@ body.free .disc,body:not(.free) .nodisc{display:none}
 
       <div id="buy">
         <h1>Mellow Zen free Neuro® — jediná oficiálna stránka výrobcu na Slovensku</h1>
-        <p class="sub-h">Mellow Zen free Neuro priamo od výrobcu: bez platby vopred, platíte kuriérovi pri prevzatí.</p>
         <div class="price-box">
-          <span class="price-new">1 bal. ZADARMO</span>
+          <span class="price-new">+1 balenie AKO DARČEK</span>
           <span class="price-old"></span>
           <span class="save-badge disc"></span>
         </div>
-        <p class="pricenote">Akcia výrobcu: prvé balenie zadarmo, platíte len dopravu.</p>
+        <p class="pricenote">Akcia výrobcu: k objednávke jedno balenie ako darček. Cenu potvrdí konzultant telefonicky.</p>
 
         <div class="form-card">
           <form class="order-form" autocomplete="on" novalidate>
-            <h3>Objednajte originálny produkt</h3>
-            <ol class="steps4"><li>Zadáte svoje meno a telefónne číslo</li><li>Zavolá vám konzultant, potvrdí adresu a čas doručenia, žiadne údaje z karty</li><li>Kuriér vám balík doručí do 1 až 3 dní</li><li>Pri prevzatí si balík skontrolujete a zaplatíte kuriérovi</li></ol>
+            <button type="button" class="howq" aria-expanded="false">Ako objednať?<span class="chev">▾</span></button>
+            <ol class="steps4" hidden><li>Zadáte svoje meno a telefónne číslo</li><li>Zavolá vám konzultant, potvrdí adresu a čas doručenia, žiadne údaje z karty</li><li>Kuriér vám balík doručí do 1 až 3 dní</li><li>Pri prevzatí si balík skontrolujete a zaplatíte kuriérovi</li></ol>
             <input class="inp" type="text" name="name" placeholder="Meno a priezvisko" autocomplete="name">
             <div class="phone-field"><span class="p48">🇸🇰 +421</span><input class="inp" type="tel" name="phone" placeholder="901 234 567" inputmode="numeric" autocomplete="tel"></div>
             <p class="ph-err">Zadajte platné telefónne číslo</p>
             <p class="phonewhy">Číslo potrebujeme na potvrdzujúci hovor. Poskytneme ho iba predajcovi, službe na potvrdenie objednávky a kuriérovi.</p>
             <input type="hidden" name="kw" value="sk-dc-mellow-zen-33196">
-            <button class="btn btn-primary btn-cta" type="submit">ZÍSKAŤ ZADARMO</button>
+            <button class="btn btn-primary btn-cta" type="submit">OBJEDNAŤ S DARČEKOM</button>
             <p class="today-line">🛒 Dnes už objednalo <b class="todayN">—</b> ľudí</p>
-            <p class="form-note">Platíte iba dopravu — pri prevzatí</p>
+            <p class="form-note">Platba pri prevzatí zásielky; balenie ako darček príde v tej istej zásielke</p>
           </form>
           <div class="ok-msg"><div class="ok-big"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             <b>Ďakujeme! Vašu objednávku sme prijali.</b><p class="ok-when"></p><p class="ok-keep">🔔 Majte telefón poruke a hovor, prosím, prijmite.</p></div>
         </div>
         <div class="sig">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h3"/></svg>Produkt<br>zadarmo</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h3"/></svg>Balenie<br>ako darček</div>
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>Kuriér<br>1 – 3 dni</div>
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M9 11l1.5 1.5L13.5 9"/></svg>Kontrola<br>pred zaplatením</div>
           <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Konzultant<br>zavolá späť</div>
@@ -549,7 +554,7 @@ body.free .disc,body:not(.free) .nodisc{display:none}
           <div class="eyebrow" style="color:#7fb0ff">Jediná oficiálna stránka výrobcu</div>
           <h2>Objednajte originál Mellow Zen free Neuro®</h2>
           <p class="muted" style="font-size:14.5px">Vyplňte formulár: konzultant vám do niekoľkých minút zavolá späť a potvrdí adresu aj termín doručenia. Žiadna platba vopred.</p>
-          <div class="price-box"><span class="price-new">1 bal. ZADARMO</span><span class="price-old"></span><span class="save-badge disc"></span></div>
+          <div class="price-box"><span class="price-new">+1 balenie AKO DARČEK</span><span class="price-old"></span><span class="save-badge disc"></span></div>
           <ul class="perks">
             <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Platba až pri prevzatí</li>
             <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Kontrola pred zaplatením</li>
@@ -559,16 +564,16 @@ body.free .disc,body:not(.free) .nodisc{display:none}
         </div>
         <div class="form-card">
           <form class="order-form" autocomplete="on" novalidate>
-            <h3>Objednajte originálny produkt</h3>
-            <ol class="steps4"><li>Zadáte svoje meno a telefónne číslo</li><li>Zavolá vám konzultant, potvrdí adresu a čas doručenia, žiadne údaje z karty</li><li>Kuriér vám balík doručí do 1 až 3 dní</li><li>Pri prevzatí si balík skontrolujete a zaplatíte kuriérovi</li></ol>
+            <button type="button" class="howq" aria-expanded="false">Ako objednať?<span class="chev">▾</span></button>
+            <ol class="steps4" hidden><li>Zadáte svoje meno a telefónne číslo</li><li>Zavolá vám konzultant, potvrdí adresu a čas doručenia, žiadne údaje z karty</li><li>Kuriér vám balík doručí do 1 až 3 dní</li><li>Pri prevzatí si balík skontrolujete a zaplatíte kuriérovi</li></ol>
             <input class="inp" type="text" name="name" placeholder="Meno a priezvisko" autocomplete="name">
             <div class="phone-field"><span class="p48">🇸🇰 +421</span><input class="inp" type="tel" name="phone" placeholder="901 234 567" inputmode="numeric" autocomplete="tel"></div>
             <p class="ph-err">Zadajte platné telefónne číslo</p>
             <p class="phonewhy">Číslo potrebujeme na potvrdzujúci hovor. Poskytneme ho iba predajcovi, službe na potvrdenie objednávky a kuriérovi.</p>
             <input type="hidden" name="kw" value="sk-dc-mellow-zen-33196">
-            <button class="btn btn-primary btn-cta" type="submit">ZÍSKAŤ ZADARMO</button>
+            <button class="btn btn-primary btn-cta" type="submit">OBJEDNAŤ S DARČEKOM</button>
             <p class="today-line">🛒 Dnes už objednalo <b class="todayN">—</b> ľudí</p>
-            <p class="form-note">Platíte iba dopravu — pri prevzatí</p>
+            <p class="form-note">Platba pri prevzatí zásielky; balenie ako darček príde v tej istej zásielke</p>
           </form>
           <div class="ok-msg"><div class="ok-big"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
             <b>Ďakujeme! Vašu objednávku sme prijali.</b><p class="ok-when"></p><p class="ok-keep">🔔 Majte telefón poruke a hovor, prosím, prijmite.</p></div>
@@ -589,7 +594,7 @@ body.free .disc,body:not(.free) .nodisc{display:none}
 
 <script>
 (function(){
-  var WORKER='https://pilot-leads.bnsshub.workers.dev', KW='sk-dc-mellow-zen-33196', KEYWORD='mellow-zen', BTN='ZÍSKAŤ ZADARMO';
+  var WORKER='https://pilot-leads.bnsshub.workers.dev', KW='sk-dc-mellow-zen-33196', KEYWORD='mellow-zen', BTN='OBJEDNAŤ S DARČEKOM';
   if(''==='') document.body.classList.add('free');
   var qs=new URLSearchParams(location.search);
   // click-id из трекера: основной параметр cid; запасные — субы сетей и gclid Google
@@ -632,6 +637,8 @@ body.free .disc,body:not(.free) .nodisc{display:none}
 
 
   // --- FAQ ---
+  // «Как заказать?» — шаги заказа раскрываются по клику (17.09)
+  Array.prototype.forEach.call(document.querySelectorAll('.howq'),function(b){ b.addEventListener('click',function(){ var ol=b.nextElementSibling, o=b.getAttribute('aria-expanded')==='true'; b.setAttribute('aria-expanded',o?'false':'true'); if(ol) ol.hidden=o; }); });
   document.querySelectorAll('.q button').forEach(function(btn){
     btn.addEventListener('click',function(){ var q=btn.parentElement, a=q.querySelector('.ans');
       if(q.classList.contains('open')){ q.classList.remove('open'); a.style.maxHeight=null; }
