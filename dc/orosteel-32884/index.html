@@ -412,7 +412,7 @@ body.free .disc,body:not(.free) .nodisc{display:none}
   <!-- 14.10: траст-блок «одобрен / доказано / без противопоказаний / рекомендуют» (просьба пользователя: до этого все блоки были про доставку и подделки) -->
   <div class="apr">
     <div><svg viewBox="0 0 28 28" fill="none" stroke="#b98900" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3l9 3.5v6c0 5.5-3.8 9.7-9 11.5-5.2-1.8-9-6-9-11.5v-6L14 3z"/><path d="M9.5 14l3 3 6-6"/></svg><div><b>Overené a schválené Ministerstvom zdravotníctva</b><span>A tisíckami spokojných zákazníkov po celom Slovensku</span></div></div>
-    <div><svg viewBox="0 0 28 28" fill="none" stroke="#b98900" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3h6M12 3v7l-6 11a2 2 0 001.8 3h12.4a2 2 0 001.8-3l-6-11V3"/><path d="M9 17h10"/></svg><div><b>Účinnosť vedecky dokázaná</b><span>Potvrdené výskumom aj reálnou praxou</span></div></div>
+    <div><svg viewBox="0 0 28 28" fill="none" stroke="#b98900" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3h6M12 3v7l-6 11a2 2 0 001.8 3h12.4a2 2 0 001.8-3l-6-11V3"/><path d="M9 17h10"/></svg><div><b>Vedecky dokázaná účinnosť</b><span>Potvrdené výskumom aj reálnou praxou</span></div></div>
     <div><svg viewBox="0 0 28 28" fill="none" stroke="#b98900" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 23C5 11 13 5 24 5c0 11-6 19-18 19"/><path d="M5 23l9-9"/></svg><div><b>Bez kontraindikácií</b><span>Nemá vedľajšie účinky</span></div></div>
     <div><svg viewBox="0 0 28 28" fill="none" stroke="#b98900" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13v10H4V13h4z"/><path d="M8 13l5-9c1.5 0 2.5 1 2.5 2.5V11h6a2 2 0 012 2.3l-1.4 7A2 2 0 0120 22H8"/></svg><div><b>90 % odporúča</b><span>Svojim blízkym na základe prieskumu zákazníkov</span></div></div>
   </div>
@@ -423,7 +423,7 @@ body.free .disc,body:not(.free) .nodisc{display:none}
   <div class="certs">
     <button class="cert" type="button" data-i="0"><img src="../../img/cert1.webp" alt="" loading="lazy" width="620" height="930"><span class="txt"><span class="flag">🇸🇰</span><span class="t">Priamy predaj</span><span class="rule"></span><span class="p">Objednávky vybavuje vlastný zákaznícky servis výrobcu. Každá objednávka sa pred odoslaním potvrdzuje telefonicky.</span><span class="prod">Orosteel®</span></span></button>
     <button class="cert" type="button" data-i="1"><img src="../../img/cert2.webp" alt="" loading="lazy" width="620" height="930"><span class="txt"><span class="flag">🇸🇰</span><span class="t">Originálne balenie</span><span class="rule"></span><span class="p">Každá zásielka odchádza s pečaťou výrobcu a s číslom šarže. Bez sprostredkovateľov a bez ďalších predajcov.</span><span class="prod">Orosteel®</span></span></button>
-    <button class="cert" type="button" data-i="2"><img src="../../img/cert3.webp" alt="" loading="lazy" width="620" height="930"><span class="txt"><span class="flag">🇸🇰</span><span class="t">Záruka predávajúceho</span><span class="rule"></span><span class="p">Zásielku si pri prevzatí skontrolujete a zaplatíte až po kontrole. Prevzatie môžete bezplatne odmietnuť.</span><span class="prod">Orosteel®</span></span></button>
+    <button class="cert" type="button" data-i="2"><img src="../../img/cert3.webp" alt="" loading="lazy" width="620" height="930"><span class="txt"><span class="flag">🇸🇰</span><span class="t">Záruka predajcu</span><span class="rule"></span><span class="p">Zásielku si pri prevzatí skontrolujete a zaplatíte až po kontrole. Prevzatie môžete bezplatne odmietnuť.</span><span class="prod">Orosteel®</span></span></button>
   </div>
 </div>
 <div class="cert-lb" id="certLb" hidden><button class="cert-x" type="button" aria-label="×">×</button><div class="cert-big"></div></div>
@@ -754,7 +754,7 @@ body.free .disc,body:not(.free) .nodisc{display:none}
   try{ var st=+localStorage.getItem('lp_stock'); if(st>6&&st<stock) stock=st; }catch(e){}   // остаток не растёт при перезагрузке
   function rs(){ sn.textContent=stock; sn2.textContent=stock; sb.style.width=Math.max(6,(stock/stockMax)*100)+'%'; try{ localStorage.setItem('lp_stock',stock); }catch(e){} }
   rs();
-  var L={"cc": "+421", "phMin": 9, "phMax": 9, "ph0": true, "fem": "a$", "t1m": "práve odoslal objednávku", "t1f": "práve odoslala objednávku", "t2m": "práve objednal 2 balenia", "t2f": "práve objednala 2 balenia", "agoMin": " min späť", "agoH": " hod. späť", "agoY": "včera", "agoD": " dní späť", "names": ["Mária", "Peter", "Anna", "Ján", "Zuzana", "Jozef", "Katarína", "Martin", "Eva", "Michal", "Jana", "Tomáš", "Lucia", "Milan", "Martina", "Marián", "Veronika", "Juraj", "Andrea", "Ľuboš"], "cities": ["Bratislava", "Košice", "Prešov", "Žilina", "Nitra", "Banská Bystrica", "Trnava", "Trenčín", "Martin", "Poprad", "Prievidza", "Zvolen", "Považská Bystrica", "Michalovce", "Nové Zámky", "Spišská Nová Ves", "Komárno", "Levice", "Humenné", "Bardejov"]};   // локаль тостов/дат/телефона (генерится сборкой из i18n)
+  var L={"cc": "+421", "phMin": 9, "phMax": 9, "ph0": true, "fem": "a$", "t1m": "práve odoslal objednávku", "t1f": "práve odoslala objednávku", "t2m": "práve objednal 2 balenia", "t2f": "práve objednala 2 balenia", "agoMin": "pred {n} min", "agoH": "pred {n} hod.", "agoY": "včera", "agoD": "pred {n} dňami", "names": ["Mária", "Peter", "Anna", "Ján", "Zuzana", "Jozef", "Katarína", "Martin", "Eva", "Michal", "Jana", "Tomáš", "Lucia", "Milan", "Martina", "Marián", "Veronika", "Juraj", "Andrea", "Ľuboš"], "cities": ["Bratislava", "Košice", "Prešov", "Žilina", "Nitra", "Banská Bystrica", "Trnava", "Trenčín", "Martin", "Poprad", "Prievidza", "Zvolen", "Považská Bystrica", "Michalovce", "Nové Zámky", "Spišská Nová Ves", "Komárno", "Levice", "Humenné", "Bardejov"]};   // локаль тостов/дат/телефона (генерится сборкой из i18n)
   var NAMES=L.names, CITIES=L.cities;
   function drop(){
     if(stock>6){
@@ -801,8 +801,9 @@ body.free .disc,body:not(.free) .nodisc{display:none}
   var AGO=[14,42,96,180,260,420];   // первые шесть — свежие, дальше растёт плавно (отзывов теперь 72)
   Array.prototype.forEach.call(document.querySelectorAll('.ago'),function(el){
     var i=+el.getAttribute('data-i'), m=(i<AGO.length?AGO[i]:Math.round(600+i*i*3.2+i*180)), t;
-    if(m<60) t=m+L.agoMin; else if(m<1440) t=Math.round(m/60)+L.agoH;
-    else if(m<2880) t=L.agoY; else t=Math.round(m/1440)+L.agoD;
+    var agoF=function(n,s){return s.indexOf('{n}')>=0?s.replace('{n}',n):n+s;};   // «vor {n} Min.» / «{n} min temu»
+    if(m<60) t=agoF(m,L.agoMin); else if(m<1440) t=agoF(Math.round(m/60),L.agoH);
+    else if(m<2880) t=L.agoY; else t=agoF(Math.round(m/1440),L.agoD);
     el.textContent=t;
   });
 
